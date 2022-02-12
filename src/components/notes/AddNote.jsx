@@ -1,8 +1,4 @@
 import styled from "styled-components";
-import { useContext, useState } from "react";
-import { NotesContext } from "./NotesContext";
-import Notes from "./Notes";
-import { v4 as uuidv4 } from "uuid";
 
 const FormContainer = styled.div`
   width: 300px;
@@ -32,41 +28,11 @@ const StyledForm = styled.form`
 `;
 
 const AddNote = () => {
-  const [Notes, setNotes] = useContext(NotesContext);
-
-  const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    setNotes((prevNotes) => [
-      ...prevNotes,
-      {
-        title: title,
-        desc: desc,
-        id: uuidv4(),
-      },
-    ]);
-  };
-
   return (
     <FormContainer>
-      <StyledForm onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Title"
-          required
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <textarea
-          type="text"
-          placeholder="Description"
-          required
-          value={desc}
-          onChange={(e) => setDesc(e.target.value)}
-        />
+      <StyledForm>
+        <input type="text" placeholder="Title" required />
+        <textarea type="text" placeholder="Description" required />
         <button>Add Note</button>
       </StyledForm>
     </FormContainer>

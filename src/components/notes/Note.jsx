@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { FaTimes } from "react-icons/fa";
-import { useContext } from "react";
-import { NotesContext } from "./NotesContext";
 
 const StyledNote = styled.div`
   max-width: 300px;
@@ -23,19 +21,11 @@ const StyledButton = styled.button`
 `;
 
 const Note = ({ ourNote }) => {
-  const [notes, setNotes] = useContext(NotesContext);
-
-  const handleDelete = (id) => {
-    const newNotes = notes.filter((note) => note.id !== id);
-
-    setNotes(newNotes);
-  };
-
   return (
     <StyledNote>
       <h2>{ourNote.title}</h2>
       <p>{ourNote.desc}</p>
-      <StyledButton onClick={() => handleDelete(ourNote.id)}>
+      <StyledButton>
         <FaTimes />
       </StyledButton>
     </StyledNote>
