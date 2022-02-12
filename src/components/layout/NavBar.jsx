@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { NotesContext } from "../notes/NotesContext";
 
 const StyledNav = styled.nav`
   display: flex;
@@ -13,11 +12,10 @@ const StyledNav = styled.nav`
 `;
 
 const NavBar = () => {
-  const [notes, setNotes] = useContext(NotesContext);
   return (
     <StyledNav>
       <h3>My Notes</h3>
-      <h3>{notes && notes.length} Notes</h3>
+      <h3>0 Notes</h3>
     </StyledNav>
   );
 };
